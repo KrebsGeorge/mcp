@@ -1,0 +1,15 @@
+[Unit]
+Description=v2scar
+After=v2ray.service
+Requires=v2ray.service
+BindsTo=v2ray.service
+
+[Service]
+WorkingDirectory=/usr/bin/v2ray/
+ExecStart=/usr/bin/v2ray/v2scar --nodeid=645348
+ExecStop=/bin/sleep 6
+Restart=always
+RestartSec=60s
+User=root
+[Install]
+WantedBy=multi-user.target
