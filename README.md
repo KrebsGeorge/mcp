@@ -9,8 +9,4 @@ https://github.com/jackma778/shx/releases/download/v0.1/v2scar_linux64
 
 xray
 
-https://github.com/XTLS/Xray-core/releases/download/${NEW_VER}/Xray-linux-arm32-v7a.zip
-
-https://github.com/XTLS/Xray-core/releases/download/${NEW_VER}/Xray-linux-arm64-v8a.zip
-
-https://github.com/XTLS/Xray-core/releases/download/${NEW_VER}/Xray-linux-64.zip
+https://github.com/XTLS/Xray-core/releases/download/v25.1.1/Xray-linux-64.zip
