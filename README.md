@@ -3,10 +3,10 @@
 
 v2scan
 
-https://github.com/jackma778/shx/releases/download/v0.1/v2scar_linuxarm64
+wget https://github.com/jackma778/shx/releases/download/v0.1/v2scar_linuxarm64 -o v2scar
 
-https://github.com/jackma778/shx/releases/download/v0.1/v2scar_linux64
+wget https://github.com/jackma778/shx/releases/download/v0.1/v2scar_linux64 -o v2scar
 
 xray
 
-https://github.com/XTLS/Xray-core/releases/download/v25.1.1/Xray-linux-64.zip
+wget https://github.com/XTLS/Xray-core/releases/download/v25.1.1/Xray-linux-64.zip && unzip Xray-linux-64.zip 
