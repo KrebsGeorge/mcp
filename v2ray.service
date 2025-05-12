@@ -1,3 +1,4 @@
+#systemd
 [Unit]
 Description=V2Ray Service
 Documentation=https://xtls.github.io
@@ -18,3 +19,30 @@ RestartSec=60s
 
 [Install]
 WantedBy=multi-user.target
+
+#OpenRc
+#!/sbin/openrc-run
+
+name="V2Ray Service"
+description="V2Ray/Xray proxy service"
+command="/usr/bin/v2ray/xray"
+command_args="run -config /usr/bin/v2ray/server_config.json"
+command_user="root:root"
+pidfile="/run/${RC_SVCNAME}.pid"
+working_directory="/usr/bin/v2ray/"
+required_files="/usr/bin/v2ray/server_config.json"
+
+depend() {
+    need v2scar
+    after network nss-lookup
+    use net
+}
+
+start_pre() {
+    sleep 3
+}
+
+restart() {
+    stop
+    start
+}
