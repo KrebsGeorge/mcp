@@ -1,3 +1,5 @@
+#systemd
+
 [Unit]
 Description=v2scar
 After=v2ray.service
@@ -13,3 +15,47 @@ RestartSec=60s
 User=root
 [Install]
 WantedBy=multi-user.target
+
+#openrc
+
+#!/sbin/openrc-run
+
+name="v2scar"
+description="V2Ray companion service"
+command="/usr/bin/v2ray/v2scar"
+command_args="--nodeid=645348"
+command_user="root:root"
+pidfile="/run/${RC_SVCNAME}.pid"
+working_directory="/usr/bin/v2ray/"
+
+depend() {
+    need v2ray
+    after v2ray
+}
+
+start() {
+    ebegin "Starting $name"
+    start-stop-daemon --start \
+        --exec "$command" \
+        --user "$command_user" \
+        --pidfile "$pidfile" \
+        --make-pidfile \
+        --background \
+        -- \
+        $command_args
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping $name"
+    sleep 6  # ExecStop 的等效操作
+    start-stop-daemon --stop \
+        --exec "$command" \
+        --pidfile "$pidfile"
+    eend $?
+}
+
+restart() {
+    stop
+    start
+}
